@@ -2,32 +2,9 @@
 
 import unittest
 
-from antlr4 import *
-from source.grammar.HelloLexer import HelloLexer
-from source.Hello import HelloPrintListener
-from source.grammar.HelloParser import HelloParser
+from tests.rules.MyTest import MyTest
 
-
-class ViolationTest(unittest.TestCase):
-
-    show_in_browser = True
-    check_passive = False
-
-    def infrastructure(self, input):
-        input = InputStream(input)
-        lexer = HelloLexer(input)
-        stream = CommonTokenStream(lexer)
-        parser = HelloParser(stream)
-        tree = parser.rule_set()
-        printer = HelloPrintListener(ViolationTest.show_in_browser, ViolationTest.check_passive)
-        walker = ParseTreeWalker()
-        walker.walk(printer, tree)
-
-    def check(self, expected_log):
-        file = open('/home/felix/paperit/html/test.log', "r")
-        log = file.read()
-        file.close()
-        assert log == expected_log, "Log does not show expected result"
+class ViolationTest(MyTest):
 
     def test_so(self):
         self.infrastructure("So here we are.")
@@ -56,7 +33,7 @@ class ViolationTest(unittest.TestCase):
 
     def test_one3(self):
         self.infrastructure(".  Based on the initial labels provided by the user, the system trains one error detection classier for each column of the data.")
-        expected = ""
+        expected = "MultiChar word: 0_status_2: error intervals: (1,2), "
         self.check(expected)
 
     def test_one4(self):
@@ -85,9 +62,9 @@ class ViolationTest(unittest.TestCase):
         self.check(expected)
 
     def test_passive1(self):
-        SoCommaTest.check_passive = True
+        MyTest.check_passive = True
         self.infrastructure("Passive is used. We use active.")
-        SoCommaTest.check_passive = False
+        MyTest.check_passive = False
         expected = "Passive word: 0_status_5: error intervals: (0,5), "
         self.check(expected)
 
@@ -117,10 +94,12 @@ class ViolationTest(unittest.TestCase):
         expected = ""
         self.check(expected)
 
+    '''
     def test_parentheses(self):
         self.infrastructure("Furthermore, in the case that we use a depth-limited decision\ntree (maximum tree depth < number of n-gram features), this\nmodel is not able to deduce string length from the language\nmodel representation.")
         expected = "AvoidPhrase word: 3_status_1: error intervals: (23,23), AvoidPhrase word: 4_status_1: error intervals: (39,39), "
         self.check(expected)
+    '''
 
     def test_multispaces(self):
         self.infrastructure("This is  now.")
