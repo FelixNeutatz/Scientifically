@@ -21,11 +21,25 @@ class AvoidPhrase(Rule):
 				['ask', ' ', 'ourselves'] # expression
 			]
 
+	message = [
+		'Avoid using _you_.', 'Avoid using _you_.',
+		'Avoid using _I_. Use _we_ instead.',
+		'It is better to use _several_.',
+		'It is better to use _was expected_.',
+		'It is better to use _can be expected_.', 'It is better to use _can be expected_.',
+		'Avoid using _clearly_.',
+		'Bad start: the reader already knows that he/she is reading this section.',
+		'Expression', 'Expression',
+		'Avoid using the exclamation mark.',
+		'Expression',
+		'Expression'
+	]
+
 	def __init__(self, word_id, tagger):
 		self.start_id = -1
 		self.end_id = -1
 
-		self.error_message = 'Avoid it!'
+		self.error_message = AvoidPhrase.message[word_id]
 
 		super(AvoidPhrase, self).__init__(word_id, tagger)
 
