@@ -116,21 +116,22 @@ class HelloPrintListener(HelloListener):
 
 		print"LOG: errors: " + log_errors
 
-		html_file = open('/home/felix/paperit/html/test.html', "w")
+		html_file = open('/tmp/scientifically.html', "w")
 		html_file.write(html)
 		html_file.close()
 
-		log_file = open('/home/felix/paperit/html/test.log', "w")
+		log_file = open('/tmp/log.log', "w")
 		log_file.write(log_errors)
 		log_file.close()
 
 		if self.show_in_browser:
-			webbrowser.open('/home/felix/paperit/html/test.html')
+			webbrowser.open('/tmp/scientifically.html')
 
 		return found_errors
 
-def main(argv):
-	input = FileStream('/home/felix/paperit/pdf/test.txt')
+
+def run(text_file):
+	input = FileStream(text_file)
 	lexer = HelloLexer(input)
 	stream = CommonTokenStream(lexer)
 	parser = HelloParser(stream)
@@ -138,6 +139,10 @@ def main(argv):
 	printer = HelloPrintListener()
 	walker = ParseTreeWalker()
 	walker.walk(printer, tree)
+
+def main(argv):
+	text_file = '/home/felix/paperit/pdf/test.txt'
+	run(text_file)
 
 if __name__ == '__main__':
 	main(sys.argv)

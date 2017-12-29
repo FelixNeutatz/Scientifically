@@ -24,7 +24,7 @@ class MyTest(unittest.TestCase):
         walker.walk(printer, tree)
 
     def check(self, expected_log):
-        file = open('/home/felix/paperit/html/test.log', "r")
+        file = open('/tmp/log.log', "r")
         log = file.read()
         file.close()
         assert log == expected_log, "Log does not show expected result"

@@ -8,7 +8,7 @@ Corpus, and then looks at its verbs. If somewhere in the sentence, there's a
 to-be verb and then later on a non-gerund, we'll flag the sentence as probably
 passive voice.
 
-https://github.com/cowlicks/ispassive
+source: https://github.com/cowlicks/ispassive
 
 """
 import os
