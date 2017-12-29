@@ -16,7 +16,9 @@ class CommaAtSentenceStart(Rule):
 				['In', ' ', 'this', ' ', 'thesis'],
 				['In', ' ', 'this', ' ', 'paper'],
 				['In', ' ', 'general'],
-				['In',' ','summary']
+				['In',' ','summary'],
+				['For', ' ', 'example'],
+				['For', ' ', 'instance'],
 			]
 
 	def __init__(self, word_id, tagger):

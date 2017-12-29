@@ -18,7 +18,11 @@ class AvoidPhrase(Rule):
 				['In', ' ', 'the', ' ', 'history'],
 				['!'],
 				['question', ' ', 'is'], # expression
-				['ask', ' ', 'ourselves'] # expression
+				['ask', ' ', 'ourselves'], # expression
+				['make', ' ', 'a', ' ', 'difference'],
+				['makes', ' ', 'a', ' ', 'difference'],
+				['in', ' ', 'many', ' ', 'cases'],
+				['in', ' ', 'order']
 			]
 
 	message = [
@@ -32,7 +36,11 @@ class AvoidPhrase(Rule):
 		'Expression', 'Expression',
 		'Avoid using the exclamation mark.',
 		'Expression',
-		'Expression'
+		'Expression',
+		'differ',
+		'differs',
+		'often',
+		'Just remove it.'
 	]
 
 	def __init__(self, word_id, tagger):
